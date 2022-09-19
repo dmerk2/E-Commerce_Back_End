@@ -73,8 +73,55 @@ router.post("/", (req, res) => {
     });
 });
 
+// update a category by its `id` value
 router.put("/:id", (req, res) => {
-  // update a category by its `id` value
+  Category.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((catgeory) => {
+      return Category.findAll({ where: { category: req.params.id } });
+    })
+    .then((categoryId) => {
+      // const categoryIds = category.map(({ category_id }) => category_id );
+      // const newCategories = req.body.categoryIDs
+      // .filter((category_id) => !categoryId.includes(category_id))
+      // .map((category_id) => {
+      //   return {
+      //     category_id: req.params.id,
+      //     category_id
+      //   }
+      // });
+      const categoryTagIds = productCategories.map(
+        ({ category_id }) => category_id
+      );
+      // create filtered list of new category_ids
+      const newCategoryIds = req.body.categoryIds
+        .filter((category_id) => !categoryTagIds.includes(category_id))
+        .map((category_id) => {
+          return {
+            product_id: req.params.id,
+            category_id,
+          };
+        });
+      const categoriesToRemove = productCategories
+        .filter(
+          ({ category_id }) => !req.body.categoryIds.includes(category_id)
+        )
+        .map(({ id }) => id);
+
+      // run both actions
+      return Promise.all([
+        CategoryId.destroy({ where: { id: categoriesToRemove } }),
+        CategoryId.bulkCreate(newCategories),
+      ]);
+    })
+    .then((updatedCategoryTags) => res.json(updatedCategoryTags))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
 
 router.delete("/:id", (req, res) => {
