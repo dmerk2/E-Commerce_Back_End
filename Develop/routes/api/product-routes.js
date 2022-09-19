@@ -40,6 +40,33 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+  Product.find({
+    include: [
+      {
+        Model: Category,
+        attributes: ["id", "category_name"],
+      },
+      {
+        Model: Tag,
+        attributes: ["id", "tag_name"],
+      },
+      {
+        Model: ProductTag,
+        attributes: ["id", "product_id", "tag_id"],
+      },
+    ],
+  })
+    .then((dbTagData) => {
+      if (!dbTagData) {
+        res.status(400).json({ message: "No Product found in this category" });
+        return;
+      }
+      res.json(dbTagData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
 
 // create new product
@@ -58,9 +85,11 @@ router.post("/", (req, res) => {
       if (req.body.tagIds.length) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
-            product_id: product.id,
-            tag_id,
-          };
+            product_name: req.params.id,
+            price: req.params.price,
+            stock: req.params.stock,
+            tagIds,
+          }
         });
         return ProductTag.bulkCreate(productTagIdArr);
       }

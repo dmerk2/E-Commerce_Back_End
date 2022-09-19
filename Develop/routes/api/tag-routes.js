@@ -36,6 +36,31 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   // find a single tag by its `id`
   // be sure to include its associated Product data
+  Tag.find({
+    include: [
+      {
+        Model: ProductTag,
+        attributes: ["id", "product_id", "tag_id"],
+      },
+      {
+        Model: Product,
+        attributes: ["id", "product_name", "price", "stock", "category_id"],
+      },
+    ],
+  })
+    .then((dbTagData) => {
+      if (!dbTagData) {
+        res
+          .status(400)
+          .json({ message: "No tag associated with this product" });
+        return;
+      }
+      res.json(dbTagData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
 
 router.post("/", (req, res) => {

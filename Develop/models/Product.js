@@ -33,7 +33,6 @@ Product.init(
     },
     category_id: {
       type: DataTypes.INTEGER,
-      // REFERENCE CATEGORY MODELS ID
     }
   },
   {

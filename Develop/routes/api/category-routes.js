@@ -7,6 +7,10 @@ router.get("/", (req, res) => {
   // find all categories
   // be sure to include its associated Products
   Category.findAll({
+    include:[Product]  // acts like an SQL JOIN command
+  })
+  
+  /*Category.findAll({
     include: [
       {
         Model: Product,
@@ -14,11 +18,13 @@ router.get("/", (req, res) => {
       },
     ],
   })
+  */
     .then((dbCategoryData) => {
       if (!dbCategoryData) {
         res.status(400).json({ message: "No category found with this id" });
         return;
       }
+      console.log(dbCategoryData);
       res.json(dbCategoryData);
     })
     .catch((err) => {
@@ -30,13 +36,11 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
-  Category.find({
-    include: [
-      {
-        Model: Product,
-        attributes: ["id", "product_name", "price", "stock", "category_id"],
-      },
-    ],
+  Category.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [Product]
   })
     .then((dbCategoryData) => {
       if (!dbCategoryData) {
@@ -52,10 +56,12 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  console.log(req.body);
   // create a new category
   Category.create(req.body)
     .then((category) => {
-      if (req.body.categoryIds.length) {
+      console.log(category);
+    /*  if (req.body.categoryIds.length) {
         const productCategoryIdArr = req.body.categoryIds.map((category_id) => {
           return {
             category_id: category_id,
@@ -64,6 +70,7 @@ router.post("/", (req, res) => {
         });
         return Category.bulkCreate(productCategoryIdArr);
       }
+      */
       res.status(200).json(category);
     })
     .then((categoryIds) => res.status(200).json(categoryIds))
@@ -80,19 +87,12 @@ router.put("/:id", (req, res) => {
       id: req.params.id,
     },
   })
+
+  /*
     .then((catgeory) => {
       return Category.findAll({ where: { category: req.params.id } });
     })
     .then((categoryId) => {
-      // const categoryIds = category.map(({ category_id }) => category_id );
-      // const newCategories = req.body.categoryIDs
-      // .filter((category_id) => !categoryId.includes(category_id))
-      // .map((category_id) => {
-      //   return {
-      //     category_id: req.params.id,
-      //     category_id
-      //   }
-      // });
       const categoryTagIds = productCategories.map(
         ({ category_id }) => category_id
       );
@@ -117,7 +117,9 @@ router.put("/:id", (req, res) => {
         CategoryId.bulkCreate(newCategories),
       ]);
     })
-    .then((updatedCategoryTags) => res.json(updatedCategoryTags))
+
+    */
+    .then((updatedObject) => res.json(updatedObject))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
@@ -126,6 +128,17 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   // delete a category by its `id` value
+  Category.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(data => {
+    console.log(data);
+    res.status(200).json(data);
+  }).catch(err => {
+    if (err) throw err;
+    res.status(500).json(err);
+  });
 });
 
 module.exports = router;

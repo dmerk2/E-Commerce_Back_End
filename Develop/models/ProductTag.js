@@ -14,11 +14,9 @@ ProductTag.init(
    },
    product_id: {
     type: DataTypes.INTEGER,
-    // REFERENCES THE PRODUCT MODELS ID
    },
    tag_id: {
     type: DataTypes.INTEGER,
-    // REFERENCES THE TAG MODELS ID
    }
   },
   {
