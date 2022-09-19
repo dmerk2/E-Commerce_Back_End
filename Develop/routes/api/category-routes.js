@@ -3,10 +3,10 @@ const { Category, Product } = require("../../models");
 
 // The `/api/categories` endpoint
 
-router.get("/", async (req, res) => {
+router.get("/", (req, res) => {
   // find all categories
   // be sure to include its associated Products
-  await Category.findAll({
+  Category.findAll({
     include: [
       {
         Model: Product,
@@ -27,10 +27,10 @@ router.get("/", async (req, res) => {
     });
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
-  await Category.find({
+  Category.find({
     include: [
       {
         Model: Product,
@@ -51,9 +51,9 @@ router.get("/:id", async (req, res) => {
     });
 });
 
-router.post("/", async (req, res) => {
+router.post("/", (req, res) => {
   // create a new category
-  await Category.create(req.body)
+  Category.create(req.body)
     .then((category) => {
       if (req.body.categoryIds.length) {
         const productCategoryIdArr = req.body.categoryIds.map((category_id) => {
