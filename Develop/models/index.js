@@ -17,13 +17,12 @@ Category.hasMany(Product, {
 
 // Products belongToMany Tags (through ProductTag)
 // Product.belongsToMany(ProductTag, {
-//   foreignKey: '',
-//   onDelete: 'CASCADE'
+//   foreignKey: 'tag_name',
 // });
 
 // Tags belongToMany Products (through ProductTag)
 // Tag.belongsToMany(ProductTag, {
-//   foreignKey: "",
+//   foreignKey: 'product_tag',
 //   onDelete: "CASCADE",
 // });
 
