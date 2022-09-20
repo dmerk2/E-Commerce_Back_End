@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
       res.json(dbCategoryData);
     })
     .catch((err) => {
-      console.log(err);
+      if (err) throw err;
       res.status(400).json(err);
     });
 });
@@ -40,7 +40,7 @@ router.get("/:id", (req, res) => {
       res.json(dbCategoryData);
     })
     .catch((err) => {
-      console.log(err);
+      if (err) throw err;
       res.status(400).json(err);
     });
 });
@@ -55,7 +55,7 @@ router.post("/", (req, res) => {
     })
     .then((categoryIds) => res.status(200).json(categoryIds))
     .catch((err) => {
-      console.log(err);
+      if (err) throw err;
       res.status(400).json(err);
     });
 });
@@ -69,7 +69,7 @@ router.put("/:id", (req, res) => {
   })
     .then((updatedObject) => res.json(updatedObject))
     .catch((err) => {
-      console.log(err);
+      if (err) throw err;
       res.status(400).json(err);
     });
 });

@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
       res.json(dbTagData);
     })
     .catch((err) => {
-      console.log(err);
+      if (err) throw err;
       res.status(400).json(err);
     });
 });
@@ -42,7 +42,7 @@ router.get("/:id", (req, res) => {
       res.json(dbTagData);
     })
     .catch((err) => {
-      console.log(err);
+      if (err) throw err;
       res.status(400).json(err);
     });
 });
