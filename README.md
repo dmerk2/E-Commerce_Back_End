@@ -4,14 +4,14 @@
 
 ## Table of Contents
 
- - [User-Story](#user-story)
- - [Description](#description)
- - [Categories-Walk-Through-Video](#categories-walk-through-video)
- - [Tags-Walk-Through-Video](#tags-walk-through-video)
- - [Products-Walk-Through-Video](#products-walk-through-video)
- - [License](#installation)
- - [Contributing](#installation)
- - [Questions](#questions)
+- [User-Story](#user-story)
+- [Description](#description)
+- [Categories-Walk-Through-Video](#categories-walk-through-video)
+- [Tags-Walk-Through-Video](#tags-walk-through-video)
+- [Products-Walk-Through-Video](#products-walk-through-video)
+- [License](#installation)
+- [Contributing](#installation)
+- [Questions](#questions)
 
 ## User Story
 
@@ -44,23 +44,23 @@ THEN I am able to successfully create, update, and delete data in my database
 ## Categories Walk-Through Video
 
 ---
-!['Categories-Walk-Through-Video'](./Assets/Categories-Walk-Through-Video.gif)
+!['Categories-Walk-Through-Video'](Assets\Categories-Walk-Through-Video.gif)
 
-[Categories-Walk-Through-Video](https://watch.screencastify.com/v/rndVM00pouGhZtRJ822A) 
+[Categories-Walk-Through-Video](https://watch.screencastify.com/v/rndVM00pouGhZtRJ822A)
 
 ## Tags Walk-Through Video
 
 ---
 !['Tags-Walk-Through-Video'](./Assets/Tags-Walk-Through-Video.gif)
 
-[Tags-Walk-Through-Video](https://watch.screencastify.com/v/BHINeMvtfQ2XDO3KhJCD) 
+[Tags-Walk-Through-Video](https://watch.screencastify.com/v/BHINeMvtfQ2XDO3KhJCD)
 
 ## Products Walk-Through Video
 
 ---
 !['Products-Walk-Through-Video'](./Assets/Products-Walk-Through-Video.gif)
 
-[Categories-Walk-Through-Video]() 
+[Categories-Walk-Through-Video]()
 
 ## License
 
