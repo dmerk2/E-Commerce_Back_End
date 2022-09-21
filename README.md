@@ -9,8 +9,8 @@
 - [Categories-Walk-Through-Video](#categories-walk-through-video)
 - [Tags-Walk-Through-Video](#tags-walk-through-video)
 - [Products-Walk-Through-Video](#products-walk-through-video)
-- [License](#installation)
-- [Contributing](#installation)
+- [License](#license)
+- [Contributing](#contributing)
 - [Questions](#questions)
 
 ## User Story
@@ -44,7 +44,7 @@ THEN I am able to successfully create, update, and delete data in my database
 ## Categories Walk-Through Video
 
 ---
-!['Categories-Walk-Through-Video'](Assets\Categories-Walk-Through-Video.gif)
+!['Categories-Walk-Through-Video'](/Assets/Categories-Walk-Through-Video.gif)
 
 [Categories-Walk-Through-Video](https://watch.screencastify.com/v/rndVM00pouGhZtRJ822A)
 
@@ -60,7 +60,7 @@ THEN I am able to successfully create, update, and delete data in my database
 ---
 !['Products-Walk-Through-Video'](./Assets/Products-Walk-Through-Video.gif)
 
-[Categories-Walk-Through-Video]()
+[Categories-Walk-Through-Video](https://watch.screencastify.com/v/l1FfBfAR2hjmtJe6QgU1)
 
 ## License
 
