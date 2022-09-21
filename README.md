@@ -60,7 +60,7 @@ THEN I am able to successfully create, update, and delete data in my database
 ---
 !['Products-Walk-Through-Video'](./Assets/Products-Walk-Through-Video.gif)
 
-[Categories-Walk-Through-Video](https://watch.screencastify.com/v/l1FfBfAR2hjmtJe6QgU1)
+[Products-Walk-Through-Video](https://watch.screencastify.com/v/l1FfBfAR2hjmtJe6QgU1)
 
 ## License
 
