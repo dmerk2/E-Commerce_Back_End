@@ -6,7 +6,7 @@ const { Tag, Product, ProductTag } = require("../../models");
 router.get("/", (req, res) => {
   // find all tags
   Tag.findAll({
-    include: [Product, ProductTag],
+    include: [{model:Product, through: ProductTag}],
   })
     .then((dbTagData) => {
       if (!dbTagData) {
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
       res.json(dbTagData);
     })
     .catch((err) => {
-      if (err) throw err;
+      console.log(err);
       res.status(400).json(err);
     });
 });
@@ -42,7 +42,7 @@ router.get("/:id", (req, res) => {
       res.json(dbTagData);
     })
     .catch((err) => {
-      if (err) throw err;
+      console.log(err);
       res.status(400).json(err);
     });
 });
@@ -55,7 +55,7 @@ router.post("/", (req, res) => {
     })
     .then((tagIds) => res.status(200).json(tagIds))
     .catch((err) => {
-      if (err) throw err;
+      console.log(err);
       res.status(400).json(err);
     });
 });
@@ -69,7 +69,7 @@ router.put("/:id", (req, res) => {
   })
     .then((updatedObject) => res.json(updatedObject))
     .catch((err) => {
-      if (err) throw err;
+      console.log(err);
       res.status(400).json(err);
     });
 });
@@ -86,7 +86,7 @@ router.delete("/:id", (req, res) => {
       res.status(200).json(data);
     })
     .catch((err) => {
-      if (err) throw err;
+      console.log(err);
       res.status(400).json(err);
     });
 });

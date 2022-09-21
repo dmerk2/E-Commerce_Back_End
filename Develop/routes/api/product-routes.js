@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   Product.findAll({
-    include: [Category, Tag, ProductTag],
+    include: [Category, {model: Tag, through: ProductTag}],
   })
     .then((dbProductData) => {
       if (!dbProductData) {
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
       res.json(dbProductData);
     })
     .catch((err) => {
-      if (err) throw err;
+      console.log(err);
       res.status(400).json(err);
     });
 });
@@ -41,7 +41,7 @@ router.get("/:id", (req, res) => {
       res.json(dbProductData);
     })
     .catch((err) => {
-      if (err) throw err;
+      console.log(err);
       res.status(400).json(err);
     });
 });
@@ -55,7 +55,7 @@ router.post("/", (req, res) => {
     })
     .then((productTagIds) => res.status(200).json(productTagIds))
     .catch((err) => {
-      if (err) throw err;
+      console.log(err);
       res.status(400).json(err);
     });
 });
@@ -85,7 +85,7 @@ router.delete("/:id", (req, res) => {
       res.status(200).json(data);
     })
     .catch((err) => {
-      if (err) throw err;
+      console.log(err);
       res.status(500).json(err);
     });
 });
